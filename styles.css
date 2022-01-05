@@ -1,0 +1,87 @@
+.checked {
+  text-decoration: line-through;
+}
+
+body {
+  background: rgb(110, 110, 110);
+  background: linear-gradient(
+    0deg,
+    rgba(110, 110, 110, 1) 0%,
+    rgba(255, 254, 254, 1) 100%
+  );
+  background-repeat: no-repeat;
+  font-family: "Outfit", sans-serif;
+  height: 100vh;
+}
+
+h1 {
+  text-shadow: 1px 2px 5px rgb(122, 122, 122);
+  font-size: 80px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+main {
+  /* border: solid black 2px; */
+  text-align: center;
+}
+
+.wraper {
+  /* border: solid red 2px; */
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  /* border: solid green 2px; */
+}
+
+.listContainer {
+  /* border: solid green 2px; */
+}
+
+ul {
+  /* border: solid blue 2px; */
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-direction: column;
+  padding: 0;
+  padding-bottom: 50px;
+}
+
+li {
+  /* border: solid orangered 2px; */
+}
+
+button {
+  margin-left: 20px;
+  box-shadow: 2px 2px 2px rgb(122, 122, 122);
+  border: 0;
+  border-radius: 5px;
+  background-color: white;
+  height: 25px;
+}
+
+#removeButton {
+  margin: 5px;
+}
+
+input {
+  box-shadow: 2px 2px 2px rgb(122, 122, 122);
+  border: 0;
+  border-radius: 5px;
+  height: 25px;
+}
+
+p {
+  cursor: pointer;
+  font-size: 25px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255);
+}
