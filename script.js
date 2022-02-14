@@ -1,12 +1,20 @@
-document.querySelector("#myItems").addEventListener("click", function (e) {
-  e.target.classList.toggle("checked");
-});
+import {
+  checkItem,
+  getData,
+  removeItem,
+  renderItemsToList,
+} from "./modules/data.mjs";
+
+checkItem("#myItems");
 
 let myToDoList = [];
-let wholeList = localStorage.getItem("list");
+let wholeList = getData("list");
 let myToDoListParsed = JSON.parse(wholeList);
 
-console.log(myToDoListParsed);
+let saveToMyList = (data) => {
+  let myListStringify = JSON.stringify(data);
+  localStorage.setItem("list", myListStringify);
+};
 
 if (myToDoListParsed) {
   myToDoList = myToDoListParsed;
@@ -14,11 +22,7 @@ if (myToDoListParsed) {
 
 if (myToDoListParsed) {
   myToDoList.map((listItem, index) => {
-    document
-      .getElementById("myItems")
-      .appendChild(
-        document.createElement("p")
-      ).innerHTML = `${listItem.text}<i class="far fa-check-circle" id="removeButton" ${index}></i>`;
+    renderItemsToList("myItems", listItem, index, myToDoList, saveToMyList);
   });
 }
 
@@ -37,19 +41,12 @@ let getValue = () => {
   location.reload();
 };
 
-let saveToMyList = (data) => {
-  let myListStringify = JSON.stringify(data);
-  localStorage.setItem("list", myListStringify);
-};
-
 let addItemButton = document.getElementById("addItemButton");
 addItemButton.addEventListener("click", getValue);
 
-let remove = (index) => {
-  myToDoList.splice(index, 1);
-  saveToMyList(myToDoList);
-  location.reload();
-};
-
-let removeButton = document.getElementById("removeButton");
-removeButton.addEventListener("click", remove);
+const allItems = document.querySelectorAll("#myItems > p > i");
+allItems.forEach((element, index) => {
+  element.addEventListener("click", () =>
+    removeItem(index, myToDoList, saveToMyList)
+  );
+});
